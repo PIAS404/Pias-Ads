@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Watch Ad</title>
-
-  <!-- Monetag verification -->
-  <meta name="monetag" content="c418652733772764949f61353e354b6a">
+  <meta charset="UTF-8">
+  <title>Blank Ad Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPS21TF10Q"></script>
@@ -18,65 +14,105 @@
     gtag('config', 'G-RPS21TF10Q');
   </script>
 
-  <!-- Monetag SDK (Rewarded Interstitial) -->
-  <script
-    src="//libtl.com/sdk.js"
-    data-zone="10349717"
-    data-sdk="show_10349717">
-  </script>
-
   <style>
-    body {
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
-      height: 100vh;
-      background: #020617;
+      padding: 0;
+      height: 100%;
+      background: #000;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 🔝 TOP 468x60 */
+    .top {
+      width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      flex-shrink: 0;
     }
 
-    button {
-      padding: 16px 40px;
-      font-size: 18px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      background: #6366f1;
-      color: #ffffff;
-      transition: transform 0.1s ease, opacity 0.1s ease;
+    .banner-468 {
+      width: 468px;
+      height: 60px;
     }
 
-    button:hover {
-      transform: scale(1.02);
+    /* 🔶 MIDDLE (tight gap) */
+    .center {
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
     }
 
-    button:active {
-      opacity: 0.9;
-      transform: scale(0.98);
+    /* 🔻 BOTTOM (6 ADS) */
+    .bottom {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ad-box {
+      width: 160px;
+      height: 300px;
+    }
+
+    /* 📱 Mobile */
+    @media (max-width: 500px) {
+      .banner-468 {
+        transform: scale(0.85);
+      }
     }
   </style>
 </head>
-
 <body>
-  <button id="watchBtn">🎬 Watch Ad</button>
 
-  <script>
-    function watchAd() {
-      if (typeof show_10349717 === "function") {
-        show_10349717().catch(() => {});
-      }
-    }
+  <!-- 🔝 TOP 468x60 -->
+  <div class="top">
+    <div class="banner-468">
+      <script>
+        atOptions = {
+          'key' : 'c31444ea201dc504855ee3ef249249d8',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/c31444ea201dc504855ee3ef249249d8/invoke.js"></script>
+    </div>
+  </div>
 
-    // Button click
-    document.getElementById("watchBtn").addEventListener("click", watchAd);
+  <!-- 🔶 MIDDLE Native Banner -->
+  <div class="center">
+    <div>
+      <script async data-cfasync="false"
+        src="https://pl28278445.effectivegatecpm.com/789ab1ff842ceb8150ba2b2ead75ffd9/invoke.js">
+      </script>
+      <div id="container-789ab1ff842ceb8150ba2b2ead75ffd9"></div>
+    </div>
+  </div>
 
-    // Auto show ad after page load (safe delay)
-    window.addEventListener("load", function () {
-      setTimeout(function () {
-        watchAd();
-      }, 1000); // SDK load safe delay
-    });
-  </script>
+  <!-- 🔻 BOTTOM 6 × 160x300 ADS -->
+  <div class="bottom">
+    <div class="ad-box"><script>atOptions={'key':'c565c78f0e2cc26adbff83dc2f5de307','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highperformanceformat.com/c565c78f0e2cc26adbff83dc2f5de307/invoke.js"></script></div>
+    <div class="ad-box"><script>atOptions={'key':'c565c78f0e2cc26adbff83dc2f5de307','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highperformanceformat.com/c565c78f0e2cc26adbff83dc2f5de307/invoke.js"></script></div>
+    <div class="ad-box"><script>atOptions={'key':'c565c78f0e2cc26adbff83dc2f5de307','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highperformanceformat.com/c565c78f0e2cc26adbff83dc2f5de307/invoke.js"></script></div>
+    <div class="ad-box"><script>atOptions={'key':'c565c78f0e2cc26adbff83dc2f5de307','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highperformanceformat.com/c565c78f0e2cc26adbff83dc2f5de307/invoke.js"></script></div>
+    <div class="ad-box"><script>atOptions={'key':'c565c78f0e2cc26adbff83dc2f5de307','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highperformanceformat.com/c565c78f0e2cc26adbff83dc2f5de307/invoke.js"></script></div>
+    <div class="ad-box"><script>atOptions={'key':'c565c78f0e2cc26adbff83dc2f5de307','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highperformanceformat.com/c565c78f0e2cc26adbff83dc2f5de307/invoke.js"></script></div>
+  </div>
+
 </body>
 </html>
