@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Page</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: navy; /* full navy blue background */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            height: 100vh;
-            overflow-y: auto;
-        }
-        iframe {
-            width: 90%;
-            height: 30vh;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Auto Ad Launcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #020b3d; /* navy blue */
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- Embedded link 3 times -->
-    <iframe src="https://weightygain.com/p1rFKg"></iframe>
-    <iframe src="https://weightygain.com/p1rFKg"></iframe>
-    <iframe src="https://weightygain.com/p1rFKg"></iframe>
+<script>
+  const AD_LINK = "https://weightygain.com/p1rFKg";
+  const RELOAD_TIME = 30000; // 30 seconds
+
+  // নতুন tab এ ads open
+  function openAd() {
+    window.open(AD_LINK, "_blank");
+  }
+
+  // page load হলেই একবার open
+  window.onloadigger = true;
+  window.onload = function () {
+    openAd();
+
+    // 30 second পর page reload
+    setTimeout(function () {
+      location.reload();
+    }, RELOAD_TIME);
+  };
+</script>
 
 </body>
 </html>
