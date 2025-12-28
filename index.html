@@ -63,7 +63,7 @@
     });
   </script>
 
-  <!-- IM Ad -->
+  <!-- IM Ad #1 -->
   <script charset="utf-8">
     if (typeof eaCtrl === "undefined") {
       var eaCtrlRecs = [];
@@ -79,5 +79,38 @@
     });
   </script>
 
+  <!-- IM Ad #2 -->
+  <script charset="utf-8">
+    if (typeof eaCtrl === "undefined") {
+      var eaCtrlRecs = [];
+      var eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
+      var js = document.createElement('script');
+      js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193339&ctrlid=799478";
+      document.head.appendChild(js);
+    }
+
+    eaCtrl.add({
+      plugin: "im",
+      sid: 8193339
+    });
+  </script>
+
+  <!-- IM Ad #3 (NEW) -->
+  <script charset="utf-8">
+    if (typeof eaCtrl === "undefined") {
+      var eaCtrlRecs = [];
+      var eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
+      var js = document.createElement('script');
+      js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193340&ctrlid=799478";
+      document.head.appendChild(js);
+    }
+
+    eaCtrl.add({
+      plugin: "im",
+      sid: 8193340
+    });
+  </script>
+
 </body>
 </html>
+
