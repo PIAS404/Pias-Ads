@@ -5,8 +5,11 @@
   <title>Continue</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ADS SCRIPT (must be loaded on page load) -->
-  <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1234093"></script>
+  <!-- ✅ WEBSITE VERIFICATION -->
+  <meta name="admaven-placement" content="Bqjw9qTnG">
+
+  <!-- ✅ POP / ONCLICK ADS SCRIPT -->
+  <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1234098"></script>
 
   <style>
     html, body {
@@ -21,7 +24,16 @@
       font-family: Arial, sans-serif;
     }
 
-    #btn {
+    #overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+    }
+
+    button {
       padding: 16px 40px;
       font-size: 18px;
       border: none;
@@ -31,29 +43,24 @@
       color: #fff;
     }
 
-    #overlay {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000;
-      z-index: 9999;
+    button:active {
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
 
-<div id="overlay">
-  <button id="btn">Continue</button>
-</div>
+  <div id="overlay">
+    <button id="btn">Continue</button>
+  </div>
 
-<script>
-  document.getElementById("btn").onclick = function () {
-    // hide button after click
-    document.getElementById("overlay").style.display = "none";
-  };
-</script>
+  <script>
+    document.getElementById("btn").onclick = function () {
+      // শুধু user interaction নিশ্চিত করা
+      document.getElementById("overlay").style.display = "none";
+      // POP ads new tab এ trigger হবে
+    };
+  </script>
 
 </body>
 </html>
