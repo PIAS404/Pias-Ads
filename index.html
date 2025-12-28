@@ -1,64 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Watch Ad</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Telegram WebApp SDK -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- ExoClick Website Verification -->
+  <meta name="eroads_" content="ae9b5f77c6072f7308703cf96f78b1bc" />
 
-  <!-- RichAds Telegram SDK -->
-  <script src="https://richinfo.co/richpartners/telegram/js/tg-ob.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      background: #020617;
-      color: #ffffff;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: system-ui, sans-serif;
-    }
-
-    button {
-      padding: 18px 44px;
-      font-size: 18px;
-      border: none;
-      border-radius: 16px;
-      background: #4f46e5;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    button:active {
-      opacity: 0.9;
-    }
-  </style>
+  <title>Verification</title>
 </head>
-
 <body>
-
-<button onclick="showAd()">▶️ Watch Ad</button>
-
-<script>
-  const tg = Telegram.WebApp;
-  tg.expand();
-
-  // Initialize RichAds
-  const ads = new TelegramAdsController();
-  ads.initialize({
-    pubId: "997484",
-    appId: "5162",
-  });
-
-  // Button click → show ad
-  function showAd() {
-    ads.show();
-  }
-</script>
-
 </body>
 </html>
