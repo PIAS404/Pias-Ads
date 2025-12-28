@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All Video Ads</title>
+  <title>All Ads Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Video.js -->
@@ -23,9 +23,9 @@
       flex-direction: column;
       align-items: center;
       gap: 20px;
+      min-height: 100vh;
     }
 
-    /* TOP VAST */
     .video-js {
       width: 100%;
       height: 240px;
@@ -43,7 +43,10 @@
       background: #22c55e;
       color: #000;
     }
-    button:active { opacity: 0.85; }
+
+    button:active {
+      opacity: 0.85;
+    }
 
     #sp_8193335_node {
       max-width: 426px;
@@ -75,7 +78,7 @@
   <div id="sp_8193335_node">&nbsp;</div>
 
   <script>
-    /* VAST TOP */
+    /* ===== TOP VAST VIDEO ===== */
     var vastPlayer = videojs('vast-player');
     vastPlayer.ima({
       adTagUrl: 'https://go.easrv.cl/vast.go?spaceid=8193337'
@@ -85,8 +88,8 @@
       vastPlayer.play();
     });
 
-    /* Load eaCtrl once */
-    function loadEaCtrl(cb){
+    /* ===== Load eaCtrl once ===== */
+    function loadEaCtrl(cb) {
       if (typeof eaCtrl === "undefined") {
         window.eaCtrlRecs = [];
         window.eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
@@ -94,12 +97,14 @@
         js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&ctrlid=799478";
         document.head.appendChild(js);
         js.onload = cb;
-      } else cb();
+      } else {
+        cb();
+      }
     }
 
-    /* Button 1 – Video Slider */
-    function showVideoSlider(){
-      loadEaCtrl(function(){
+    /* ===== Button 1: Video Slider ===== */
+    function showVideoSlider() {
+      loadEaCtrl(function () {
         eaCtrl.add({
           plugin: "videoslider",
           isflt: 1,
@@ -109,10 +114,10 @@
       });
     }
 
-    /* Button 2 – InPage Video */
-    function showInPageVideo(){
+    /* ===== Button 2: InPage Video ===== */
+    function showInPageVideo() {
       document.getElementById("sp_8193335_node").style.display = "block";
-      loadEaCtrl(function(){
+      loadEaCtrl(function () {
         eaCtrl.add({
           plugin: "inpage_video",
           sid: 8193335,
@@ -141,10 +146,27 @@
       js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193336&ctrlid=799478";
       document.head.appendChild(js);
     }
+
     eaCtrl.add({
       plugin: "floater",
       sid: 8193336,
       advertise: "Advertisement"
+    });
+  </script>
+
+  <!-- 🧩 IM Ad (Auto – No Button) -->
+  <script charset="utf-8">
+    if (typeof eaCtrl === "undefined") {
+      var eaCtrlRecs = [];
+      var eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
+      var js = document.createElement('script');
+      js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193338&ctrlid=799478";
+      document.head.appendChild(js);
+    }
+
+    eaCtrl.add({
+      plugin: "im",
+      sid: 8193338
     });
   </script>
 
