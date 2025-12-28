@@ -68,7 +68,7 @@
       }
     }
 
-    // Button 1 – Video Slider / Interstitial
+    // Button 1 – Video Slider
     function showVideoSlider() {
       loadEaCtrl(function () {
         eaCtrl.add({
@@ -102,6 +102,23 @@
         });
       });
     }
+  </script>
+
+  <!-- 🔽 Bottom Floater Ad (No Button – Auto Load) -->
+  <script charset="utf-8">
+    if (typeof eaCtrl == "undefined") {
+      var eaCtrlRecs = [];
+      var eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
+      var js = document.createElement('script');
+      js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193336&ctrlid=799478";
+      document.head.appendChild(js);
+    }
+
+    eaCtrl.add({
+      plugin: "floater",
+      sid: 8193336,
+      advertise: "Advertisement"
+    });
   </script>
 
 </body>
