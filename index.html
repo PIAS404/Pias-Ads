@@ -2,37 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Ad</title>
-
+  <title>Watch Video</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
+      height: 100vh;
       background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      padding: 16px 40px;
+      font-size: 18px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      background: #22c55e;
+      color: #000;
+    }
+
+    button:active {
+      opacity: 0.85;
     }
   </style>
 </head>
 <body>
 
-  <!-- EroAdvertising Interstitial / Video Slider Ad -->
-  <script charset="utf-8">
-    if (typeof eaCtrl == "undefined") {
-      var eaCtrlRecs = [];
-      var eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag) } };
-      var js = document.createElement('script');
-      js.setAttribute("src", "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193334&ctrlid=799478");
-      document.head.appendChild(js);
-    }
+  <button onclick="showAd()">▶ Watch Video</button>
 
-    eaCtrl.add({
-      "plugin": "videoslider",
-      "isflt": 1,
-      "sid": 8193334,
-      "advertise": "advertisement"
-    });
+  <script charset="utf-8">
+    function showAd() {
+      if (typeof eaCtrl == "undefined") {
+        window.eaCtrlRecs = [];
+        window.eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
+
+        var js = document.createElement("script");
+        js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193334&ctrlid=799478";
+        document.head.appendChild(js);
+
+        js.onload = function () {
+          eaCtrl.add({
+            plugin: "videoslider",
+            isflt: 1,
+            sid: 8193334,
+            advertise: "advertisement"
+          });
+        };
+      } else {
+        eaCtrl.add({
+          plugin: "videoslider",
+          isflt: 1,
+          sid: 8193334,
+          advertise: "advertisement"
+        });
+      }
+    }
   </script>
 
 </body>
