@@ -2,35 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Continue</title>
+  <title>Loading</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ WEBSITE VERIFICATION -->
-  <meta name="admaven-placement" content="Bqjw9qTnG">
-
-  <!-- ✅ POP / ONCLICK ADS SCRIPT -->
-  <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1234098"></script>
+  <!-- In-Page Push Ads -->
+  <script src="https://richinfo.co/richpartners/in-page/js/richads-ob.js?pubid=997484&siteid=381853" async></script>
 
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
       background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      color: #fff;
       font-family: Arial, sans-serif;
+      min-height: 200vh; /* IMPORTANT */
     }
 
-    #overlay {
+    #btn-box {
       position: fixed;
       inset: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       background: #000;
+      z-index: 10;
     }
 
     button {
@@ -42,25 +36,25 @@
       background: #2563eb;
       color: #fff;
     }
-
-    button:active {
-      opacity: 0.9;
-    }
   </style>
 </head>
 <body>
 
-  <div id="overlay">
-    <button id="btn">Continue</button>
-  </div>
+<div id="btn-box">
+  <button id="btn">Continue</button>
+</div>
 
-  <script>
-    document.getElementById("btn").onclick = function () {
-      // শুধু user interaction নিশ্চিত করা
-      document.getElementById("overlay").style.display = "none";
-      // POP ads new tab এ trigger হবে
-    };
-  </script>
+<div style="padding:20px;">
+  <h2>Loading content...</h2>
+  <p>Please wait while content loads.</p>
+</div>
+
+<script>
+  document.getElementById("btn").onclick = function () {
+    document.getElementById("btn-box").style.display = "none";
+    window.scrollTo(0, 100); // trigger scroll
+  };
+</script>
 
 </body>
 </html>
