@@ -2,16 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All Ads Page</title>
+  <title>InPage Video</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Video.js -->
-  <link href="https://cdn.jsdelivr.net/npm/video.js@8.6.1/dist/video-js.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/video.js@8.6.1/dist/video.min.js"></script>
-
-  <!-- VAST / IMA -->
-  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@7.3.0/dist/videojs-contrib-ads.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/videojs-ima@2.2.0/dist/videojs.ima.min.js"></script>
 
   <style>
     body {
@@ -19,142 +11,57 @@
       background: #000;
       color: #fff;
       font-family: Arial, sans-serif;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 20px;
-      min-height: 100vh;
     }
 
-    .video-js {
-      width: 100%;
-      height: 240px;
-    }
-    @media (min-width: 768px) {
-      .video-js { height: 360px; }
-    }
-
-    button {
-      padding: 16px 40px;
-      font-size: 18px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      background: #22c55e;
-      color: #000;
-    }
-
-    button:active {
-      opacity: 0.85;
-    }
-
+    /* InPage Video Container */
     #sp_8193335_node {
       max-width: 426px;
       max-height: 240px;
-      display: none;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔝 TOP AUTO VAST VIDEO -->
-  <video
-    id="vast-player"
-    class="video-js vjs-default-skin"
-    muted
-    autoplay
-    playsinline>
-  </video>
-
   <p>18+ Adult Content</p>
-
-  <!-- Button 1 -->
-  <button onclick="showVideoSlider()">▶ Watch Video</button>
-
-  <!-- Button 2 -->
-  <button onclick="showInPageVideo()">▶ InPage Video</button>
 
   <!-- InPage Video Container -->
   <div id="sp_8193335_node">&nbsp;</div>
 
-  <script>
-    /* ===== TOP VAST VIDEO ===== */
-    var vastPlayer = videojs('vast-player');
-    vastPlayer.ima({
-      adTagUrl: 'https://go.easrv.cl/vast.go?spaceid=8193337'
-    });
-    vastPlayer.ready(function () {
-      vastPlayer.ima.requestAds();
-      vastPlayer.play();
-    });
-
-    /* ===== Load eaCtrl once ===== */
-    function loadEaCtrl(cb) {
-      if (typeof eaCtrl === "undefined") {
-        window.eaCtrlRecs = [];
-        window.eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
-        var js = document.createElement('script');
-        js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&ctrlid=799478";
-        document.head.appendChild(js);
-        js.onload = cb;
-      } else {
-        cb();
-      }
-    }
-
-    /* ===== Button 1: Video Slider ===== */
-    function showVideoSlider() {
-      loadEaCtrl(function () {
-        eaCtrl.add({
-          plugin: "videoslider",
-          isflt: 1,
-          sid: 8193334,
-          advertise: "Advertisement"
-        });
-      });
-    }
-
-    /* ===== Button 2: InPage Video ===== */
-    function showInPageVideo() {
-      document.getElementById("sp_8193335_node").style.display = "block";
-      loadEaCtrl(function () {
-        eaCtrl.add({
-          plugin: "inpage_video",
-          sid: 8193335,
-          display: "sp_8193335_node",
-          skip_btn: true,
-          skip_after_sec: 5,
-          show_countdown: true,
-          skip_position: "top_right",
-          auto_hide: true,
-          controls: false,
-          muted: true,
-          autoplay: true,
-          loop: true,
-          advertise: "Advertisement"
-        });
-      });
-    }
-  </script>
-
-  <!-- 🔽 Bottom Floater (Auto) -->
-  <script>
+  <!-- InPage Video Ad (Auto Load) -->
+  <script charset="utf-8">
     if (typeof eaCtrl === "undefined") {
       var eaCtrlRecs = [];
       var eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
       var js = document.createElement('script');
-      js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193336&ctrlid=799478";
+      js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193335&ctrlid=799478";
       document.head.appendChild(js);
     }
 
     eaCtrl.add({
-      plugin: "floater",
-      sid: 8193336,
+      plugin: "inpage_video",
+      sid: 8193335,
+      display: "sp_8193335_node",
+      skip_btn: true,
+      skip_after_sec: 5,
+      show_countdown: true,
+      skip_position: "top_right",
+      auto_hide: true,
+      controls: false,
+      muted: true,
+      autoplay: true,
+      loop: true,
       advertise: "Advertisement"
     });
   </script>
 
-  <!-- 🧩 IM Ad (Auto – No Button) -->
+  <!-- IM Ad (Auto Load) -->
   <script charset="utf-8">
     if (typeof eaCtrl === "undefined") {
       var eaCtrlRecs = [];
