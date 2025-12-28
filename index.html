@@ -2,12 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Video Ad</title>
 
-  <!-- ExoClick Website Verification -->
-  <meta name="eroads_" content="ae9b5f77c6072f7308703cf96f78b1bc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Verification</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- EroAdvertising Interstitial / Video Slider Ad -->
+  <script charset="utf-8">
+    if (typeof eaCtrl == "undefined") {
+      var eaCtrlRecs = [];
+      var eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag) } };
+      var js = document.createElement('script');
+      js.setAttribute("src", "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193334&ctrlid=799478");
+      document.head.appendChild(js);
+    }
+
+    eaCtrl.add({
+      "plugin": "videoslider",
+      "isflt": 1,
+      "sid": 8193334,
+      "advertise": "advertisement"
+    });
+  </script>
+
 </body>
 </html>
