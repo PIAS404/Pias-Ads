@@ -2,58 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Loading</title>
+  <title>Loading...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- In-Page Push Ads -->
-  <script src="https://richinfo.co/richpartners/in-page/js/richads-ob.js?pubid=997484&siteid=381853" async></script>
+  <!-- Telegram Ads Script -->
+  <script src="https://richinfo.co/richpartners/telegram/js/tg-ob.js"></script>
 
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
       background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      min-height: 200vh; /* IMPORTANT */
-    }
-
-    #btn-box {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000;
-      z-index: 10;
-    }
-
-    button {
-      padding: 16px 40px;
-      font-size: 18px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      background: #2563eb;
-      color: #fff;
     }
   </style>
 </head>
 <body>
 
-<div id="btn-box">
-  <button id="btn">Continue</button>
-</div>
-
-<div style="padding:20px;">
-  <h2>Loading content...</h2>
-  <p>Please wait while content loads.</p>
-</div>
-
 <script>
-  document.getElementById("btn").onclick = function () {
-    document.getElementById("btn-box").style.display = "none";
-    window.scrollTo(0, 100); // trigger scroll
-  };
+  // Initialize Telegram Ads
+  window.TelegramAdsController = new TelegramAdsController();
+  window.TelegramAdsController.initialize({
+    pubId: "997484",
+    appId: "5162",
+  });
 </script>
 
 </body>
