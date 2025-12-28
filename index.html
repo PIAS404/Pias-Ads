@@ -2,13 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Verification</title>
+  <title>Continue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- AdMaven Site Verification -->
-  <meta name="admaven-placement" content="Bqjw9qTnG">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
 
+    button {
+      padding: 16px 40px;
+      font-size: 18px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      background: #2563eb;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
+
+<button id="btn">Continue</button>
+
+<script>
+  document.getElementById("btn").onclick = function () {
+    this.disabled = true;
+    this.innerText = "Loading...";
+
+    // load sw.js after button click (NO reload)
+    var s = document.createElement("script");
+    s.src = "/sw.js";
+    s.setAttribute("data-cfasync", "false");
+    document.body.appendChild(s);
+  };
+</script>
+
 </body>
 </html>
-
