@@ -5,6 +5,9 @@
   <title>Continue</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ADS SCRIPT (must be loaded on page load) -->
+  <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1234093"></script>
+
   <style>
     html, body {
       margin: 0;
@@ -18,7 +21,7 @@
       font-family: Arial, sans-serif;
     }
 
-    button {
+    #btn {
       padding: 16px 40px;
       font-size: 18px;
       border: none;
@@ -27,22 +30,28 @@
       background: #2563eb;
       color: #fff;
     }
+
+    #overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
 
-<button id="btn">Continue</button>
+<div id="overlay">
+  <button id="btn">Continue</button>
+</div>
 
 <script>
   document.getElementById("btn").onclick = function () {
-    this.disabled = true;
-    this.innerText = "Loading...";
-
-    // load sw.js after button click (NO reload)
-    var s = document.createElement("script");
-    s.src = "/sw.js";
-    s.setAttribute("data-cfasync", "false");
-    document.body.appendChild(s);
+    // hide button after click
+    document.getElementById("overlay").style.display = "none";
   };
 </script>
 
