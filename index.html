@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Watch Video</title>
+  <title>Video Ads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -13,7 +13,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      gap: 20px;
       font-family: Arial, sans-serif;
+      color: #fff;
     }
 
     button {
@@ -29,38 +32,75 @@
     button:active {
       opacity: 0.85;
     }
+
+    #sp_8193335_node {
+      margin-top: 20px;
+      max-width: 426px;
+      max-height: 240px;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <button onclick="showAd()">▶ Watch Video</button>
+  <!-- Button 1 -->
+  <button onclick="showVideoSlider()">▶ Watch Video</button>
+
+  <!-- Button 2 -->
+  <button onclick="showInPageVideo()">▶ InPage Video</button>
+
+  <!-- InPage Video Container -->
+  <div id="sp_8193335_node">&nbsp;</div>
 
   <script charset="utf-8">
-    function showAd() {
-      if (typeof eaCtrl == "undefined") {
+    function loadEaCtrl(callback) {
+      if (typeof eaCtrl === "undefined") {
         window.eaCtrlRecs = [];
         window.eaCtrl = { add: function (ag) { eaCtrlRecs.push(ag); } };
 
         var js = document.createElement("script");
-        js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&spaceid=8193334&ctrlid=799478";
+        js.src = "//go.easrv.cl/loadeactrl.go?pid=154323&ctrlid=799478";
         document.head.appendChild(js);
 
-        js.onload = function () {
-          eaCtrl.add({
-            plugin: "videoslider",
-            isflt: 1,
-            sid: 8193334,
-            advertise: "advertisement"
-          });
-        };
+        js.onload = callback;
       } else {
+        callback();
+      }
+    }
+
+    // Button 1 – Video Slider / Interstitial
+    function showVideoSlider() {
+      loadEaCtrl(function () {
         eaCtrl.add({
           plugin: "videoslider",
           isflt: 1,
           sid: 8193334,
-          advertise: "advertisement"
+          advertise: "Advertisement"
         });
-      }
+      });
+    }
+
+    // Button 2 – InPage Video
+    function showInPageVideo() {
+      document.getElementById("sp_8193335_node").style.display = "block";
+
+      loadEaCtrl(function () {
+        eaCtrl.add({
+          plugin: "inpage_video",
+          sid: 8193335,
+          display: "sp_8193335_node",
+          skip_btn: true,
+          skip_after_sec: 5,
+          show_countdown: true,
+          skip_position: "top_right",
+          auto_hide: true,
+          controls: false,
+          muted: true,
+          autoplay: true,
+          loop: true,
+          advertise: "Advertisement"
+        });
+      });
     }
   </script>
 
