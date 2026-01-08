@@ -1,85 +1,218 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>instagram: @pythonlearnerr</title>
-  <style>
-    body{
-      font-family: Arial, sans-serif;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      margin:0;
-      background:#f5f5f5;
-    }
-    .box{
-      width:400px;
-      height:400px;
-      background:white;
-      border-radius:16px;
-      box-shadow:0 10px 25px rgba(0,0,0,.1);
-      position:relative;
-      padding:24px;
-      box-sizing:border-box;
-      text-align:center;
-      overflow:hidden;
-    }
-    h2{ margin-top:10px; }
-    button{
-      padding:10px 18px;
-      border:0;
-      border-radius:10px;
-      font-size:16px;
-      cursor:pointer;
-    }
-    #yes{ background:#22c55e; color:white; }
-    #no{
-      background:#ef4444; color:white;
-      position:absolute;
-      left:50%;
-      top:55%;
-      transform:translate(-50%,-50%);
-    }
-    #yesWrap{ margin-top:30px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do you like me?</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  font-family:"Segoe UI",sans-serif;
+}
+
+.card{
+  width:380px;
+  max-width:90%;
+  background:#fff;
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  position:relative;
+  overflow:hidden;
+  animation:pop .6s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+h2{margin:0;font-size:26px;color:#333}
+p{margin:10px 0 25px;color:#666;min-height:22px}
+
+.buttons{position:relative;height:150px}
+
+button{
+  padding:12px 22px;
+  font-size:16px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  user-select:none;
+}
+
+#yes{
+  background:#22c55e;
+  color:#fff;
+  box-shadow:0 8px 20px rgba(34,197,94,.4);
+}
+
+#no{
+  position:absolute;
+  left:50%;
+  top:55%;
+  transform:translate(-50%,-50%);
+  background:#ef4444;
+  color:#fff;
+  box-shadow:0 8px 20px rgba(239,68,68,.4);
+}
+
+/* STRONG SHAKE */
+.shake{
+  animation:shake .6s linear;
+}
+@keyframes shake{
+  0%{transform:translateX(0)}
+  15%{transform:translateX(-14px)}
+  30%{transform:translateX(14px)}
+  45%{transform:translateX(-12px)}
+  60%{transform:translateX(12px)}
+  75%{transform:translateX(-8px)}
+  90%{transform:translateX(8px)}
+  100%{transform:translateX(0)}
+}
+
+/* EMOJI */
+.emoji{
+  position:absolute;
+  pointer-events:none;
+  animation:floatUp .9s ease forwards;
+}
+@keyframes floatUp{
+  from{transform:translateY(0) scale(1);opacity:1}
+  to{transform:translateY(-80px) scale(1.8);opacity:0}
+}
+
+.footer{
+  margin-top:25px;
+  font-size:12px;
+  color:#999;
+}
+</style>
 </head>
+
 <body>
-  <div class="box" id="box">
-    <h2>Do you like me? 😄</h2>
-    <div id="yesWrap">
-      <button id="yes">Yes</button>
-    </div>
-    <button id="no">No</button>
+
+<!-- REAL AUDIO (GUARANTEED SOUND) -->
+<audio id="noSound" preload="auto">
+  <source src="https://assets.mixkit.co/active_storage/sfx/416/416-preview.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+  <h2>Do you like me? 😄</h2>
+  <p id="msg">Be honest… I won’t judge 🤭</p>
+
+  <div class="buttons" id="arena">
+    <button id="yes">Yes ❤️</button>
+    <button id="no">No 🙃</button>
   </div>
 
-  <script>
-    const box = document.getElementById("box");
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
+  <div class="footer">made with ❤️ by pythonlearnerr</div>
+</div>
 
-    yesBtn.addEventListener("click", () => {
-      alert("Thanks for Accepting ❤️");
-    });
+<script>
+const card  = document.getElementById("card");
+const arena = document.getElementById("arena");
+const noBtn = document.getElementById("no");
+const yesBtn= document.getElementById("yes");
+const msg   = document.getElementById("msg");
+const sound = document.getElementById("noSound");
 
-    function moveNo(){
-      const boxRect = box.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
+const texts=[
+  "No? 😂 Try again!",
+  "Nice try 😜",
+  "You can't say NO 🤣",
+  "Almost caught me 😎",
+  "Haha nope 🙃"
+];
 
-      const maxX = boxRect.width - btnRect.width;
-      const maxY = boxRect.height - btnRect.height;
+function playSound() {
+  sound.currentTime = 0;
+  sound.play().catch(() => {});
+  
+  // sound auto stop after 1.3 second
+  setTimeout(() => {
+    sound.pause();
+    sound.currentTime = 0;
+  }, 1300); // 1300ms = 1.3 sec
+}
 
-      const x = Math.floor(Math.random() * maxX);
-      const y = Math.floor(Math.random() * maxY);
+function shakeScreen(){
+  card.classList.remove("shake");
+  void card.offsetWidth;
+  card.classList.add("shake");
+}
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top  = y + "px";
-      noBtn.style.transform = "translate(0,0)";
-    }
+function emojiBurst(x,y){
+  const emojis=["😂","🤣","😜","🙃","😎","🤡","💀"];
+  const count=3+Math.floor(Math.random()*3); // 3-5
+  for(let i=0;i<count;i++){
+    const e=document.createElement("div");
+    e.className="emoji";
+    e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.fontSize=(32+Math.random()*25)+"px";
+    e.style.left=(x+(Math.random()*60-30))+"px";
+    e.style.top=(y+(Math.random()*30-10))+"px";
+    arena.appendChild(e);
+    setTimeout(()=>e.remove(),900);
+  }
+}
 
-    noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); });
-  </script>
+function moveNo(x,y){
+  const r=arena.getBoundingClientRect();
+  const b=noBtn.getBoundingClientRect();
+  const nx=Math.random()*(r.width-b.width);
+  const ny=Math.random()*(r.height-b.height);
+  noBtn.style.left=nx+"px";
+  noBtn.style.top=ny+"px";
+  noBtn.style.transform="translate(0,0)";
+  msg.textContent=texts[Math.floor(Math.random()*texts.length)];
+  playSound();
+  shakeScreen();
+  emojiBurst(x,y);
+}
+
+/* Hover (PC) */
+noBtn.addEventListener("mouseenter",()=>{
+  const r=arena.getBoundingClientRect();
+  moveNo(r.width/2,r.height/2);
+});
+
+/* Click / Touch (Mobile + PC) */
+noBtn.addEventListener("click",(e)=>{
+  e.preventDefault();
+  const r=arena.getBoundingClientRect();
+  const b=noBtn.getBoundingClientRect();
+  moveNo(b.left-r.left+b.width/2,b.top-r.top+b.height/2);
+});
+
+/* YES */
+yesBtn.addEventListener("click",()=>{
+  document.body.innerHTML=`
+  <div style="
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+    text-align:center;">
+    <div>
+      <h1 style="font-size:40px;">Aww 🥰</h1>
+      <p style="font-size:20px;">Thanks for accepting ❤️<br>I knew it 😉</p>
+    </div>
+  </div>`;
+});
+</script>
+
 </body>
 </html>
